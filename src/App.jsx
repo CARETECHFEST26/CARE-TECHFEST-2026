@@ -14,6 +14,7 @@ import {
   MapPin,
   Clock,
   ExternalLink,
+  Trophy,
 } from "lucide-react";
 import "./index.css";
 
@@ -55,6 +56,11 @@ const EVENTS = [
       "The participants should bring/submit both PPT and PDF formats of their presentation.",
       "The decision of the jury will be final."
     ],
+    prizesNote: "Venue-wise",
+    prizes: [
+      { rank: "1st Prize", amount: "₹3,000", note: "Venue-wise" },
+      { rank: "2nd Prize", amount: "₹2,000", note: "Venue-wise" },
+    ],
     submitTo: "techfest@care.ac.in",
     staffCoordinator: { name: "Mrs Ranitha R", phone: "+91 98942 50879" },
     studentCoordinator: { name: "Rubinesh S", phone: "+91 93452 63930" },
@@ -70,6 +76,10 @@ const EVENTS = [
     venue: "Main Exhibition Hall / Labs",
     timing: "1:00 PM – 2:30 PM",
     logo: "/InnoExpo_logo.png",
+    prizes: [
+      { rank: "1st Prize", amount: "₹3,000" },
+      { rank: "2nd Prize", amount: "₹2,000" },
+    ],
     rules: [
       "Team size: 2 to 4 members.",
       "Working prototype or simulation model must be presented.",
@@ -617,7 +627,35 @@ function EventDetailPage({ event, goTo }) {
             <Clock size={20} />
             <span><strong>Timing —</strong> {event.timing}</span>
           </div>
+          {event.prizes && (
+            <div className="tf-meta-row">
+              <Trophy size={20} style={{ color: '#F59E0B' }} />
+              <span>
+                <strong>Cash Prizes —</strong> 1st Prize: {event.prizes[0].amount}, 2nd Prize: {event.prizes[1].amount} {event.prizesNote ? `(${event.prizesNote})` : ''}
+              </span>
+            </div>
+          )}
         </div>
+
+        {event.prizes && (
+          <>
+            <h2 className="tf-h3" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <Trophy size={24} style={{ color: '#F59E0B' }} /> Cash Prizes
+            </h2>
+            <div className="tf-prizes-grid">
+              {event.prizes.map((pz, i) => (
+                <div key={i} className="tf-panel tf-prize-card">
+                  <div className="tf-prize-badge">{i === 0 ? "🥇" : "🥈"}</div>
+                  <div className="tf-prize-info">
+                    <div className="tf-prize-rank">{pz.rank}</div>
+                    <div className="tf-prize-amount">{pz.amount}</div>
+                    {pz.note && <div className="tf-prize-note">({pz.note})</div>}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
 
         {event.comingSoon ? (
           <div className="tf-panel tf-soon">
