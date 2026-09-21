@@ -1417,15 +1417,36 @@ a.tf-btn-primary:hover {
 }
 
 .tf-register-deadline {
-  display: inline-block;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px 10px;
   background: rgba(244, 180, 0, 0.12);
   color: #fbbf24;
   border: 1px solid rgba(244, 180, 0, 0.35);
-  padding: 8px 16px;
+  padding: 10px 18px;
   border-radius: 20px;
   font-size: 0.95rem;
   margin: 16px 0 20px;
   font-family: var(--font-body);
+}
+
+.tf-deadline-strike {
+  text-decoration: line-through;
+  color: #ef4444;
+  opacity: 0.85;
+  font-weight: 500;
+}
+
+.tf-deadline-extended {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-weight: 700;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+  display: inline-block;
 }
 
 /* Cash Prizes Section */

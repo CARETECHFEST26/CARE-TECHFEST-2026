@@ -857,7 +857,11 @@ function RegisterPage() {
           <CountdownTimer compact={false} />
 
           <p className="tf-register-deadline">
-            <strong>Last Date to Register:</strong> September 22, 2026 at 5:00 PM
+            <strong>Last Date to Register:</strong>{" "}
+            <span className="tf-deadline-strike">September 22, 2026 at 5:00 PM</span>{" "}
+            <span className="tf-deadline-extended">
+              Extended to September 24, 2026 at 12:00 PM
+            </span>
           </p>
 
           <a
